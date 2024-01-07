@@ -5,6 +5,7 @@ import { simpleBlogCard } from "./lib/interface";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+export const revalidate = 30; // revalidate at most 30 seconds
 async function getData() {
   const query = `
   *[_type == 'blog'] | order(_createdAt desc){
@@ -15,7 +16,6 @@ async function getData() {
   }`;
 
   const data = await client.fetch(query);
-  console.log(data);
   return data;
 }
 export default async function Home() {

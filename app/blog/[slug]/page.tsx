@@ -2,7 +2,7 @@ import { fullBlog } from "@/app/lib/interface";
 import { client, urlFor } from "@/app/lib/sanity";
 import { PortableText } from "@portabletext/react";
 import Image from "next/image";
-
+export const revalidate = 30; // revalidate at most 30 seconds
 async function getData(slug: string) {
   const query = `*[_type == "blog" && slug.current == '${slug}']{
         "currentSlug":slug.current,
